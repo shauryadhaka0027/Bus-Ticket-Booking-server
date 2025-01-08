@@ -25,7 +25,7 @@ app.use("/api",ticketRouter)
 
 
 
-app.listen(3000,async()=>{
+app.listen(process.env.PORT,async()=>{
     try {
         await connection
         console.log('Server running on port 3000');
