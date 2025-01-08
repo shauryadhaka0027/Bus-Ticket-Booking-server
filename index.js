@@ -6,14 +6,14 @@ import ticketRouter from "./routes/ticket.js"
 import cors from "cors"
 import cookieParser from 'cookie-parser';
 
-const url= process.env.PRODUCTION_URL
+
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
 console.log(process.env.PRODUCTION_URL)
 app.use(cors({
-    origin: url,
+    origin: "https://bus-ticket-booking-app-beta.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
 }));
