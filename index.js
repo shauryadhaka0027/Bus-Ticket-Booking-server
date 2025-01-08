@@ -11,9 +11,9 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-
+console.log(process.env.PRODUCTION_URL)
 app.use(cors({
-    origin: ["http://localhost:4200",process.env.PRODUCTION_URL],
+    origin: process.env.PRODUCTION_URL,
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
 }));
