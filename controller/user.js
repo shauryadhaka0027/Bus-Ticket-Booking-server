@@ -18,14 +18,18 @@ export const signup=async(req,res)=>{
       } )
 
       res.cookie("token", token, {
+        httpOnly: true,      
+        sameSite: "None",    
+        secure: true,        
+        maxAge: 2 * 24 * 60 * 60 * 1000, 
         // httpOnly: true,      
         // sameSite: "None",    
         // secure: true,        
         // maxAge: 2 * 24 * 60 * 60 * 1000, 
-        httpOnly: false,
-        sameSite:"Lax", 
-        secure: true,                   
-        maxAge: 2* 24 * 60 * 60 * 1000,  
+        // httpOnly: false,
+        // sameSite:"Lax", 
+        // secure: true,                   
+        // maxAge: 2* 24 * 60 * 60 * 1000,  
       });
 
       res.status(201).json({message: 'User registered successfully', data: newUser})
@@ -48,10 +52,10 @@ export const login=async(req,res)=>{
 
       console.log("token: " + token)
       res.cookie("token", token, {
-        httpOnly: false,        
-        sameSite: "Lax",       
-        secure: true,          
-        maxAge: 2 * 24 * 60 * 60 * 1000,
+        httpOnly: true,      
+        sameSite: "None",    
+        secure: true,        
+        maxAge: 2 * 24 * 60 * 60 * 1000, 
       });
     //   const token=user.generateToken();
       res.json({message: 'User logged in successfully',data:user})

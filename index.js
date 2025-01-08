@@ -13,25 +13,25 @@ app.use(cookieParser());
 
 console.log(process.env.PRODUCTION_URL)
 app.use(cors({
-    origin: "https://bus-ticket-booking-app-beta.vercel.app",
-        methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: process.env.PRODUCTION_URL,
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
 }));
 
 app.use("/api", busRoute);
-app.use("/api", userRouter)
-app.use("/api", ticketRouter)
+app.use("/api",userRouter)
+app.use("/api",ticketRouter)
 
 
 
 
-app.listen(process.env.PORT, async () => {
+app.listen(process.env.PORT,async()=>{
     try {
         await connection
         console.log('Server running on port 3000');
         console.log('Connected to MongoDB');
 
     } catch (error) {
-
+        
     }
 })
