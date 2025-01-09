@@ -1,6 +1,8 @@
 import Stripe from "stripe";
 import Bus from "../model/bus.js";
+import dotenv from "dotenv"
 
+dotenv.config();
 
 export const paymentRequest = async (req, res) => {
   const { number, id ,userId} = req.body;
@@ -36,9 +38,9 @@ export const paymentRequest = async (req, res) => {
         },
       ],
       mode: 'payment',
-      success_url: `http://localhost:4200/payment_succes/${findBus._id}?userId=${userId}&seatNumbers=${number.join(',')}`,
+      success_url: `${process.env.PRODUCTION_URL}/payment_succes/${findBus._id}?userId=${userId}&seatNumbers=${number.join(',')}`,
 
-      cancel_url: 'http://localhost:4200/home',
+      cancel_url: `${process.env.PRODUCTION_URL}/home`,
     });
    
  
